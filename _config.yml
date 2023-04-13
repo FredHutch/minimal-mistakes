@@ -11,8 +11,9 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
-remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+remote_theme: mmistakes/minimal-mistakes@4.24.0
+minimal_mistakes_skin    : contrast # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 # Plugins (previously gems:)
 plugins:
   - jekyll-paginate
@@ -23,17 +24,8 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
   - jekyll-archives
+  - jekyll-redirect-from
 
-# mimic GitHub Pages with --safe
-whitelist:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
-  - jekyll-remote-theme
-  - jekyll-archives
 # Site Settings
 locale                   : "en-US"
 title                    : "Site Title"
@@ -41,87 +33,38 @@ name                     : "Your Name"
 description              : "An amazing website."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-# breadcrumbs            : false # true, false (default)
-words_per_minute         : 200
-comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
-  disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
-staticman:
-  allowedFields          : # ['name', 'email', 'url', 'message']
-  branch                 : # "master"
-  commitMessage          : # "New comment by {fields.name}"
-  filename               : # comment-{@timestamp}
-  format                 : # "yml"
-  moderation             : # true
-  path                   : # "/_data/comments/{options.slug}" (default)
-  requiredFields         : # ['name', 'email', 'message']
-  transforms:
-    email                : # "md5"
-  generatedFields:
-    date:
-      type               : # "date"
-      options:
-        format           : # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
-  endpoint               : # URL of your own deployment with trailing slash, will fallback to the public instance
-reCaptcha:
-  siteKey                :
-  secret                 :
+repository               : "FredHutch/FH-minimal-mistakes" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+teaser                   :  "/images/favicon-hutch.png" # path of fallback teaser image, e.g.
+logo                     : "/images/FHCC_Logo_FullColor_RGB.png" ## "/images/fhdasl-brothers-squared.png"
+
+
 atom_feed:
+  hide                   : true
   path                   : # blank (default) uses feed.xml
 search                   :  true #, false (default)
 search_full_content      :  true #, false (default)
 search_provider          :  lunr #(default), algolia, google
-algolia:
-  application_id         : # YOUR_APPLICATION_ID
-  index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : # true (default), false
+lunr:
+  search_within_pages: true
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
 # SEO Related
 google_site_verification :
-bing_site_verification   :
-yandex_site_verification :
-naver_site_verification  :
-
-# Social Sharing
-twitter:
-  username               :
-facebook:
-  username               :
-  app_id                 :
-  publisher              :
-og_image                 : # Open Graph/Twitter default site image
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
-social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
-
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : "google-gtag" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          :
+    tracking_id          :  ""
     anonymize_ip         : # true, false (default)
-
 
 
 # Reading Files
 include:
-  - .htaccess
+  - _data
+  - assets
+  - _layouts
+  - images
   - _pages
 exclude:
 keep_files:
@@ -129,33 +72,7 @@ keep_files:
   - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-
-
-# Conversion
 markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
-
-
-# Markdown Processing
-kramdown:
-  input: GFM
-  hard_wrap: false
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-
-
-# Sass/SCSS
-sass:
-  sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
 
 # Outputting
 permalink: /:categories/:title/
@@ -164,7 +81,39 @@ paginate_path: /page:num/
 timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      share: false
+      sidebar:
+        nav: "frontpage"
+#_pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      classes: wide
+      share: false
+      sidebar:
+        nav: "frontpage"
 
+footer:
+  links:
+    - label: "See our GitHub Org"
+      icon: "fab fa-fw fa-github"
+      url: https://github.com/FredHutch
+    - label: "Join the Conversation on Slack"
+      icon: "fab fa-fw fa-slack"
+      url: https://hutchdatascience.org/joinslack/
+    - label: "Read Fred Hutch Data Science Docs"
+      icon: "fas fa-book"
+      url: https://sciwiki.fredhutch.org
 
 
 # Archives
@@ -194,34 +143,3 @@ tag_archive:
 #   permalinks:
 #     category: /categories/:name/
 #     tag: /tags/:name/
-
-
-# HTML Compression
-# - http://jch.penibelst.de/
-compress_html:
-  clippings: all
-  ignore:
-    envs: development
-
-
-# Defaults
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      share: false
-      sidebar:
-        nav: "frontpage"
-#_pages
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
-      classes: wide
-      share: false
-      sidebar:
-        nav: "frontpage"

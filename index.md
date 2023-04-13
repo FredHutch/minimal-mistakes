@@ -3,7 +3,9 @@ title: Your Website Title
 layout: splash
 permalink: /
 header:
-  overlay_image: http://www.sciencemag.org/sites/default/files/styles/inline__450w__no_aspect/public/images/13%20June%202014.jpg?itok=Eo7hIVqO
+  overlay_color: "#000"
+  overlay_filter: "0.5"
+  overlay_image: 
 excerpt: "Some cool information about us"
 feature_row:
   - title: "Calendar"

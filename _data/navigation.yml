@@ -2,3 +2,9 @@
 main:
   - title: "Quick-Start Guide"
     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+
+frontpage:
+  - title: "Who We Are"
+    children:
+      - title: "Page 1"
+        url: ""

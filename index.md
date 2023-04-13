@@ -3,8 +3,8 @@ title: Your Website Title
 layout: splash
 permalink: /
 header:
-  overlay_color: "#000"
-  overlay_filter: "0.5"
+  overlay_color: "#1B365D"
+  overlay_filter: 
   overlay_image: 
 excerpt: "Some cool information about us"
 feature_row:
